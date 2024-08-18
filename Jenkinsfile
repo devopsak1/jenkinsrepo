@@ -1,0 +1,27 @@
+pipeline
+{
+    stages
+    {
+        stage("Checkout the code")
+        {
+            steps
+            {
+                git url:'https://github.com/devopsak1/jenkinsrepo.git',branch:'main'
+            }
+        }
+        stage("Build docker file ")
+        {
+            steps
+            {
+                sh 'docker build -t myimage .'
+            }
+        }
+        stage("Create container ")
+        {
+            steps
+            {
+                sh 'docker run -d -p 8501:8501 myimage'
+            }
+        }
+    }
+}
