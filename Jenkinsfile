@@ -14,7 +14,7 @@ pipeline
         {
             steps
             {
-                sh 'docker rm -f $(ps -aq)'
+                sh 'docker rm -f $(docker ps -aq)'
                 sh 'docker rmi myimage'
             }
         }
